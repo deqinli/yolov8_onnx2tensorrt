@@ -61,10 +61,10 @@
             dbox = self.decode_bboxes(self.dfl(box), self.anchors.unsqueeze(0)) * self.strides
         # [ldq 在下方语句后添加 .permute(0,2,1)  2024-8-28 09:26:22]
         return torch.cat((dbox, cls.sigmoid()), 1) #源代码
-        # return torch.cat((dbox, cls.sigmoid()), 1).permute(0, 2, 1) # 修改后的代码
-
+        # return torch.cat((dbox, cls.sigmoid()), 1).permute(0, 2, 1) # 修改后的代码 ('''
+	
  该函数的return语句：
  	return torch.cat((dbox, cls.sigmoid()), 1) #原代码
   	修改为：
    	return torch.cat((dbox, cls.sigmoid()), 1).permute(0, 2, 1) # 修改后的代码,作用是交换数组元素的位置，由原来的【1,84,8400】变为【1,8400,84】
-  '''(
+  
